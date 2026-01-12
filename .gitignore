@@ -6,4 +6,4 @@ build
 /database*
 ./idea*
 /out
-/vscode*
+vscode
