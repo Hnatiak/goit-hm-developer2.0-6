@@ -6,27 +6,16 @@ import java.sql.SQLException;
 
 public class Database {
 
-    private static Database instance;
-    private Connection connection;
+    private static final Database INSTANCE = new Database();
+    private static final String URL = "jdbc:h2:./test";
 
-    private Database() {
-        try {
-            // in-memory база H2
-            connection = DriverManager.getConnection("jdbc:h2:~/testdb;DB_CLOSE_DELAY=-1", "sa", "");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Cannot connect to DB");
-        }
-    }
+    private Database() {}
 
     public static Database getInstance() {
-        if (instance == null) {
-            instance = new Database();
-        }
-        return instance;
+        return INSTANCE;
     }
 
-    public Connection getConnection() {
-        return connection;
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL);
     }
 }

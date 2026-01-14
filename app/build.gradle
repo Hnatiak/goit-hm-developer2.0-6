@@ -15,5 +15,5 @@ dependencies {
 }
 
 application {
-    mainClass = 'org.example.db.DatabaseInitService'
+    mainClass = 'org.example.App'
 }
